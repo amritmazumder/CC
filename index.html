@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<?php
+
+		$startmarkup = '<div class="tweet">';
+		$endmarkup = '</div>';
+
+		foreach($string[statuses] as $items)
+		    {
+		        echo $startmarkup.$items['text'].'<br />';
+		        echo $items['user']['name'].'<br />';
+		        echo $items['user']['screen_name'].$endmarkup;
+		    }
+	?>
+	
+</html>
