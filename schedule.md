@@ -1,4 +1,5 @@
-#Chatter
+#Chatter*
+
 
 ##High Level Goal(s):
 _To index and visualize opinion in relation to events._
