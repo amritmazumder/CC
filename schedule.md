@@ -6,6 +6,8 @@ _To index and visualize opinion in relation to events._
 
 ##Schedule
 
+DQ = Design Question
+
 ###Week 1
 Twitter API
 * Learn how to fetch data from Twitter. Examine the limitations of the API.
