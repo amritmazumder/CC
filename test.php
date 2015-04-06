@@ -14,8 +14,10 @@
 
 	
 		$input = htmlentities($_GET['val1']);
-		$count = '20';
-		$getfield = '?q='.$input.'&count='.$count;
+		$count = '200';
+		/** $getfield = '?q='.$input.'&count='.$count; **/
+		$getfield = '?q='.$input.'&count='.$count.'&lang=en'.'&result_type=mixed';
+
 
 		$twitter = new TwitterAPIExchange($settings);
 		$string = json_decode($twitter->setGetfield($getfield)
@@ -47,13 +49,16 @@
 		$tweetTime = '<div class="tweet-time">';
 		$tweetUser = '<div class="tweet-user">';
 		$tweetHandle = '<div class="tweet-handle">';
+		$tweetStats = '<div class="tweet-stats">';
 
 		echo 'Showing '.$count.' Tweets For: '.$input.'<br />';
 		foreach($string[statuses] as $items)
-		    {
+		    {	
 		        echo $startTweetBlock.$tweet.$items['text'].$closeDiv;
 		        echo $tweetUser.$items['user']['name'].$closeDiv;
 		        echo $tweetHandle.'@'.$items['user']['screen_name'].$closeDiv;
+		        echo $tweetStats.$items['favorite_count'].$closeDiv;
+		        echo $tweetStats.$items['retweet_count'].$closeDiv;
 		        echo $tweetTime.$items['created_at'].'<br />'.$closeDiv.$closeDiv;
 		    }
 	?>
