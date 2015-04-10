@@ -1,9 +1,17 @@
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
 * { 
 	-moz-box-sizing: border-box; 
 	-webkit-box-sizing: border-box; 
 	box-sizing: border-box; 
 	behavior: url(../htc/boxsizing.htc);
 }
+
+/* Twitter Related Stuff */
+
 
 .tweet-block {
 	width: 40%;
