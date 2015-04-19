@@ -1,38 +1,71 @@
 $(document).ready(function(){
 
-	var svg = d3.select('.container').append('svg').attr('width','100%').attr('height','600');
+	var winWidth = $(window).width();
+	var winHeight = $(window).height();
+
 	var datasetX = [5,100,150,200,250];
 	var datasetY = [30,603,121,843,354];
 
-	d3.select('svg').append('circle')
-	.attr('r','50')
-	.attr('cy','50%')
-	.attr('cx','50%');
+	var megaData = [
+		{
+			"x": 100,
+			"y": 60,
+			"r": 30,
+			"color":'red'
+		}, {
+			"x": 200,
+			"y": 403,
+			"r": 10,
+			"color":'blue'
+		}, {
+			"x": 550,
+			"y": 121,
+			"r": 75,
+			"color":'green'
+		}, {
+			"x": 800,
+			"y": 243,
+			"r": 45,
+			"color":'yellow'
+		}, {
+			"x": 1000,
+			"y": 354,
+			"r": 100,
+			"color":'black'
+		}];
 
-	d3.select('circle').attr('fill','#ffce00')
-	.transition()
-	.duration(2000)
-	.attr('r','20')
-	.attr('cy','100%')
-	.attr('cx','20%')	
-	.attr('fill',"#ff5656");
+	var svg = d3.select('.container').append('svg').attr('width','100%').attr('height',winHeight);
 
-	var shuffle = function(){
-			for(i=0;i<datasetX.length;i++){
-			d3.select('circle').transition().duration(4000)
-			.attr('cx',datasetX[i])
-			.attr('cy',datasetY[i])
-			.attr('r',datasetX[i]);
-			shuffle();
-		}
-	}
+	var circles = svg.selectAll('circle')
+						.data(megaData)
+						.enter()
+						.append('circle')
+						.attr('cx',winWidth/2)
+						.attr('cy',winHeight/2)
+						.attr('r','20');
+		
+		circles.on('mouseover',function(){
+					circles.transition()
+							.duration(2000)
+							.attr('cx',function(d){
+								return d.x
+							})
+							.attr('cy',function(d){
+								return d.y
+							})
+							.attr('r',function(d){
+								return d.r
+							})
+							.attr('fill',function(d){
+								return d.color
+							})
+		});
 
-
-	// for (i = 0; i < dataset.length; i++) {
-	// 	d3.select('circle')
-	// 		.attr('fill','#ffce00')
-	// 		.transition().duration(4000)
-	// 		.attr('cx',dataset[i]).attr('cy',dataset[i]).attr('r',dataset[i]/10)
-	// 		.attr('fill',"#ff5656");
-	// }
+		circles.on('mouseout',function(){
+			circles.transition()
+			.attr('cx',winWidth/2)
+			.attr('cy',winHeight/2)
+			.attr('r',20)
+			.attr('fill','black')
+		});
 });

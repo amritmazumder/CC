@@ -9,7 +9,7 @@
 	    'consumer_secret' => "vXaU7YgkQr3D6zL2C3R5dcT6uz1udZmz4rLVlK3bdJRRpKK2Fw"
 	);
 
-	$url = "https://api.twitter.com/1.1/search/tweets.json";
+	$url = "https://stream.twitter.com/1.1/search/tweets.json";
 	$requestMethod = "GET";
 
 	

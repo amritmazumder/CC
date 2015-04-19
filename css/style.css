@@ -46,3 +46,11 @@ body, html {
 	font-size: 0.7em;
 	margin-bottom: 5px;
 }
+
+.tweet {
+	width: 300px;
+	width: 300px;
+	background-color: yellow;
+	margin: 10px;
+	float: left;
+}
