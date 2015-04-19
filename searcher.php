@@ -13,7 +13,7 @@
 	$requestMethod = "GET";
 
 	
-		$input = '#sxsw';
+		$input = '#icorruption';
 		$count = '100';
 	
 		$getfield = '?q='.$input.'&count='.$count.'&lang=en'.'&result_type=mixed';

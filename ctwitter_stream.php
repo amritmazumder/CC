@@ -60,7 +60,8 @@ class ctwitter_stream
     private function process_tweet($_data)
     {   
         //print_r('works in the outside');
-        print_r($_data);
+        //print_r($_data);
+        echo $_data;
         return true;
     }
 

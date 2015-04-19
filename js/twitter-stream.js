@@ -13,8 +13,9 @@ $(document).ready(function(){
 					if (typeof response.errors === 'undefined' || response.errors.length < 1) {	
 							// var arr = [];
 							// arr.push(response);
-							console.log(response);
-					
+							var inData = jQuery.parseJSON(response);
+							streamUpdate(inData);
+							
 					} else {	 
 						    console.log('not working');
 					}
@@ -25,8 +26,8 @@ $(document).ready(function(){
 			});
 		});
 
-	var streamUpdate = function(response){
+	var streamUpdate = function(inData){
 		var svg = d3.select('.container').append('svg').attr('width','100%').attr('height',winHeight);
-		var text = svg.selectAll('text').data(response).enter().append('text').text(response);
+		var text = svg.selectAll('text').data(inData).enter().append('text').text(inData.length);
 	}
 });
