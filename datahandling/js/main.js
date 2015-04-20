@@ -5,6 +5,11 @@ $(document).ready(function(){
  	
  	var tweetObj;
 
+ 	var container = d3.select('.container')
+ 						.append('svg')
+ 						.attr('width',winWidth)
+ 						.attr('height',winHeight);
+
  	//Get Data from PHP file, create an Object with the incoming JSON string
 	$(function(){
 		$.ajax({
@@ -14,7 +19,7 @@ $(document).ready(function(){
 					if (typeof response.errors === 'undefined' || response.errors.length < 1) {	
 							tweetObj = jQuery.parseJSON(response);
 							drawTweet(tweetObj);
-							console.log(tweetObj.statuses.length);
+							//console.log(tweetObj);
 					} else {	 
 						    console.log('fucked');
 					}
@@ -24,5 +29,11 @@ $(document).ready(function(){
 				}
 			});
 		});
+
+	var drawTweet = function(tweet) {
+		console.log(tweet.statuses.length);
+	}
+
+
 
 });
