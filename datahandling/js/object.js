@@ -1,70 +1,50 @@
 var t = [];
-var inputVal;
 var originalVal;
-
-function getData(inputVal) {
-   
-        $.ajax({
-            url: '../searcher.php?var1='+inputVal,
-            type: 'GET',
-            success: function(response) {
-    
-                if (typeof response.errors === 'undefined' || response.errors.length < 1) { 
-                        
-                        //parse the received data into a JSON Object
-                        tweetObj = jQuery.parseJSON(response);
-
-                        //Run function and pass received data into the program
-                        processTweet(tweetObj, inputVal);
-                        
-                } else {     
-                        console.log('screwed');
-                }
-            },
-            error: function(errors) {
-                console.log('screwed');
-            }
-        });
-     
-}
-
-
-
 
 $(document).ready(function(){      
         $('.trig-button').click(function(){
-            inputVal = $('.formo').val();
+           var inputVal = $('.formo').val();
+          
             getData(inputVal);
-
-            // $.ajax({
-            //     url: '../searcher.php?var1='+retValue,
-            //     type: 'GET',
-            //     success: function(response) {
-            //         if (typeof response.errors === 'undefined' || response.errors.length < 1) { 
-                            
-            //                 //parse the received data into a JSON Object
-            //                 tweetObj = jQuery.parseJSON(response);
-
-            //                 //Run function and pass received data into the program
-            //                 processTweet(tweetObj, inputVal);
-                            
-            //         } else {     
-            //                 console.log('screwed');
-            //         }
-            //     },
-            //     error: function(errors) {
-            //         console.log('screwed');
-            //     }
-            // }); 
         });
 });
 
 
 
+function getData(inputVal) {
+        //console.log(inputVal);
+        if (inputVal != undefined) {
+            $.ajax({
+                url: '../searcher.php?var1='+inputVal+'',
+                type: 'GET',
+                success: function(response) {
+        
+                    if (typeof response.errors === 'undefined' || response.errors.length < 1) { 
+                            
+                            //parse the received data into a JSON Object
+                            tweetObj = jQuery.parseJSON(response);
+
+                            //Run function and pass received data into the program
+                            processTweet(tweetObj, inputVal);
+                            
+                    } else {     
+                            console.log('screwed');
+                    }
+                },
+                error: function(errors) {
+                    console.log('screwed');
+                }
+            });
+        } else {
+            console.log('was undefined');
+        }
+     
+}
+
 
 
 function processTweet(tweet, inputVal){
-   
+
 	for(i = 0; i < tweet.statuses.length; i++){
 		t[i] = new Tweet(tweet.statuses[i]);
 	}
@@ -109,13 +89,14 @@ function organizeChrono(){
    var report = new Date(firstTweetTime) + ">>>>>>>>>>>" + new Date(lastTweetTime)
    $('.container').append("<div class='report'>" + report + "</div>");
 }
-
+var commonWords = ['the', 'a', 'this', 'then', 'in', 'rt', 'for', 'they', 'to', 'was', 'is', 'i', 'of', 'an', 'and', 'my', 'his', 'her', 'our', 'at', 'with', 'go', 'it', 'you', 'are', 'by', 'on', 'from', 'not', 'me'];
 
 function parseTweet(inputVal) {
    
-    var commonWords = [inputVal, 'the', 'a', 'this', 'then', 'in', 'rt', 'for', 'they', 'to', 'was', 'is', 'i', 'of', 'an', 'and', 'my', 'his', 'her', 'our', 'at', 'with', 'go', 'it', 'you', 'are', 'by', 'on', 'from', 'not', 'me'];
+    commonWords.push(inputVal);
 
     var tokens = [];
+
     for (var i = 0; i < t.length; i++) {
   
         var text = t[i].text;
@@ -156,9 +137,9 @@ function getDominantToken(array)
             maxCount = modeMap[el];
         }
     }
-
+    commonWords.push(maxEl);
     console.log(maxEl);
-   // getData(maxEl);
+    getData(maxEl);
     return maxEl;
 }
 
