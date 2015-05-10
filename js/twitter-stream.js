@@ -27,7 +27,6 @@ $(document).ready(function(){
 		});
 
 	var streamUpdate = function(inData){
-		var svg = d3.select('.container').append('svg').attr('width','100%').attr('height',winHeight);
-		var text = svg.selectAll('text').data(inData).enter().append('text').text(inData.length);
+		console.log(inData);
 	}
 });

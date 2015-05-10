@@ -9,11 +9,18 @@
 	    'consumer_secret' => "vXaU7YgkQr3D6zL2C3R5dcT6uz1udZmz4rLVlK3bdJRRpKK2Fw"
 	);
 
+	$var1 = $_GET['var1'];
+
 	$url = "https://api.twitter.com/1.1/search/tweets.json";
 	$requestMethod = "GET";
 
-	
-		$input = '#hackathon';
+
+	if ($var1) {
+		$input = $var1;
+	} else {
+		$input = 'hackathon%20women%20-RT';
+	}
+
 		$count = '100';
 	
 		$getfield = '?q='.$input.'&count='.$count.'&lang=en'.'&result_type=mixed';
@@ -23,6 +30,5 @@
 		echo $twitter->setGetfield($getfield)
 		             ->buildOauth($url, $requestMethod)
 		             ->performRequest();
-	
-
+ 
 ?>

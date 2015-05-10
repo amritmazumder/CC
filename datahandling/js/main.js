@@ -21,11 +21,11 @@ $(document).ready(function(){
 							drawTweet(tweetObj);
 							//console.log(tweetObj);
 					} else {	 
-						    console.log('fucked');
+						    console.log('eror');
 					}
 				},
 				error: function(errors) {
-					console.log('fucked');
+					console.log('eror');
 				}
 			});
 		});

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Data Handling</title>
-		<meta charset="utf-8">	
+		<meta charset="UTF-8">	
 		<!-- including stylesheet -->
 		<style type="text/css">
 		.link {
@@ -12,7 +12,56 @@
 
 		.node {
 			background: #ffce00;
+
 		}
+
+		.wrapped {
+			font-family: sans-serif;
+		}
+
+		.tweet {
+			width: 20%;
+			margin: 10px;
+			padding: 10px;
+			float: left;
+			box-sizing: border-box;
+			border: 1px solid #d8d8d8;
+		}
+
+		.tweet-text {
+			width: 100%;
+			display: block;
+		}
+
+		.tweet-time {
+			width: 100%;
+			margin-top: 10px;
+			display: block;
+		}
+
+		.report {
+			width: 100%;
+			float: left;
+		}
+
+		.tweet-tags {
+			width: 100%;
+			font-weight: bold;
+			margin-top: 20px;
+			display: block;
+			color: red;
+		}
+
+		.trigger {
+			width: 20px;
+			height: 20px;
+			background: red;
+		}
+
+		.fixed {
+			position: fixed;
+		}
+
 		</style>
 
 		<!-- Including jQuery -->
@@ -20,12 +69,24 @@
 		
 		<!-- Including d3.js -->
 		<script type="text/javascript" src="../js/d3.v3.js"></script>
+
+		<!-- Including Text Wrapping Plugin -->
+		<script type="text/javascript" src="js/d3textwrap.v0.js"></script>
+
 		<!-- Including javascript doc -->
 		<script type="text/javascript" src="js/links.js"></script>
 
 	</head>
 
 	<body>
+	
+		<div class='fixed'>
+			<input type="text" name="mytext" maxlength="80" size="30" class='formo'>
+			<input type="button" onclick="getData()" value="Test Ajax" class='trig-button'></input>
+		</div>
+
+		<div class='trigger'></div>
 		<div class='container'></div>
+		<div class='dump'></div>
 	</body>
 </html>
