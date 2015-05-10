@@ -89,7 +89,7 @@ function organizeChrono(){
    var report = new Date(firstTweetTime) + ">>>>>>>>>>>" + new Date(lastTweetTime)
    $('.container').append("<div class='report'>" + report + "</div>");
 }
-var commonWords = ['the', 'a', 'this', 'then', 'in', 'rt', 'for', 'they', 'to', 'was', 'is', 'i', 'of', 'an', 'and', 'my', 'his', 'her', 'our', 'at', 'with', 'go', 'it', 'you', 'are', 'by', 'on', 'from', 'not', 'me'];
+var commonWords = ['  ',' ','','the', 'a', 'this', 'then', 'in', 'rt', 'for', 'they', 'to', 'was', 'is', 'i', 'of', 'an', 'and', 'my', 'his', 'her', 'our', 'at', 'with', 'go', 'it', 'you', 'are', 'by', 'on', 'from', 'not', 'me'];
 
 function parseTweet(inputVal) {
    
@@ -100,7 +100,9 @@ function parseTweet(inputVal) {
     for (var i = 0; i < t.length; i++) {
   
         var text = t[i].text;
-        var splitText = text.split(/\b\s+/);
+        var splitText = text.split(/\s+/);
+
+
 
         for (var j = 0; j < splitText.length; j++) {
             var token = splitText[j].toLowerCase();
